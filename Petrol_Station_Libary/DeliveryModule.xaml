@@ -81,7 +81,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="0.22*"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="DeliveryNameInputComboBox" Margin="5,10,0,10" Grid.Row="1" Grid.Column="0" Foreground="White" Background="#FF0C1017">
+                    <ComboBox x:Name="DeliveryNameInputComboBox" Margin="5,10,0,10" Grid.Row="1" Grid.Column="0" Foreground="White" Background="#FF0C1017" SelectionChanged="DeliveryNameInputComboBox_SelectionChanged">
                         <ComboBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -91,7 +91,7 @@
                         <ComboBoxItem>Бензин</ComboBoxItem>
                         <ComboBoxItem>Дизел</ComboBoxItem>
                     </ComboBox>
-                    <TextBox x:Name="DeliveryNameInput" Foreground="White" Margin="0,10,20,10"  Grid.Row="1" Grid.Column="0" Background="#0C1017">
+                    <TextBox x:Name="DeliveryNameInput" Foreground="White" Margin="0,10,20,10"  Grid.Row="1" Grid.Column="0" Background="#0C1017" TextChanged="DeliveryNameInput_TextChanged">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -130,17 +130,18 @@
                 </TextBox>
                 <!--Направление-->
                 <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" Foreground="White" FontSize="20">Направление</TextBlock>
-                <ComboBox x:Name="ToWhereInputComboBox" Margin="5,10,50,10" Grid.Row="4" Grid.Column="1" Foreground="White" Background="#FF0C1017">
+                <ComboBox x:Name="ToWhereInputComboBox" Margin="5,10,50,10" Grid.Row="4" Grid.Column="1" Foreground="White" Background="#FF0C1017" SelectionChanged="ToWhereInputComboBox_SelectionChanged">
                     <ComboBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                         <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#0C1017" />
                     </ComboBox.Resources>
-                    <ComboBoxItem>Бензин</ComboBoxItem>
-                    <ComboBoxItem>Дизел</ComboBoxItem>
+                        <ComboBoxItem>1</ComboBoxItem>
+                        <ComboBoxItem>2</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
                 </ComboBox>
-                <TextBox x:Name="ToWhereInput" Foreground="White" Margin="0,10,70,10"  Grid.Row="4" Grid.Column="1" Background="#0C1017">
+                <TextBox x:Name="ToWhereInput" IsReadOnly="True" Foreground="White" Margin="0,10,70,10"  Grid.Row="4" Grid.Column="1" Background="#0C1017">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>

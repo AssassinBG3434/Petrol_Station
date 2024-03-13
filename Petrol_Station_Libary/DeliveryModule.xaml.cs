@@ -23,6 +23,10 @@ namespace Petrol_Station_Libary
 
         List<string> listOfTypeGas = new List<string>();
         List<string> leftWords = new List<string>();
+        List<string> leftNames = new List<string>();
+        Dictionary<int,string> idAndName= new Dictionary<int,string>();
+        int keyOfSelectedName;
+        Queries queries= new Queries();
         public DeliveryModule()
         {
             InitializeComponent();
@@ -33,11 +37,7 @@ namespace Petrol_Station_Libary
                 listOfTypeGas.Add(res[1].Trim());
 
             }
-        }
-        string typeGas;
-        private void DeliveryButtonAdd_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            typeGas = TypeGasInput.Text;
+            idAndName = queries.GetNamesForDelivery();
         }
 
         private void deliverButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -58,6 +58,7 @@ namespace Petrol_Station_Libary
             MakeItVisible();
             DeliverModule.Visibility=Visibility.Hidden;
             BackButton.Visibility = Visibility.Hidden;
+            idAndName = queries.GetNamesForDelivery();
         }
 
         private void TypeGasInput_TextChanged(object sender, TextChangedEventArgs e)
@@ -66,21 +67,11 @@ namespace Petrol_Station_Libary
             leftWords.Clear();
             if (!string.IsNullOrEmpty(input)) 
             {
-                for (int i = 0;i<input.Length;i++)
+                for (int i = 0; i < listOfTypeGas.Count;i++)
                 {
-                    for (int y = 0; y < listOfTypeGas.Count;y++)
+                    if (listOfTypeGas[i].ToLower().Contains(input.ToLower().Trim()))
                     {
-                        for (int j = 0;j< listOfTypeGas[y].Length;j++)
-                        {
-                            if (input[i].ToString().ToLower() == listOfTypeGas[y][j].ToString().ToLower())
-                            {
-                                if (!leftWords.Contains(listOfTypeGas[y]))
-                                {
-                                    leftWords.Add(listOfTypeGas[y]);
-                                }
-                                break;
-                            }
-                        }
+                        leftWords.Add(listOfTypeGas[i]);
                     }
                 }
                 TypeGasInputComboBox.Items.Clear();
@@ -99,7 +90,83 @@ namespace Petrol_Station_Libary
             string selectedItem = (string)TypeGasInputComboBox.SelectedItem;
             TypeGasInput.Text = selectedItem;
             TypeGasInput.Text = selectedItem;
+            
         }
 
+        private void DeliveryNameInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string input = DeliveryNameInput.Text;
+            if (!string.IsNullOrEmpty(input))
+            {
+                leftNames.Clear();
+                List<int> keys = new List<int>();
+                foreach (int key in idAndName.Keys)
+                {
+                    keys.Add(key);
+                }
+                for (int i = 0; i < idAndName.Count; i++)
+                {
+                    if (idAndName[keys[i]].ToLower().Contains(input.ToLower().Trim()))
+                    {
+                        if (!leftNames.Contains(idAndName[i]))
+                        {
+                            leftNames.Add(idAndName[keys[i]]);
+                        }
+                    }
+                }
+                DeliveryNameInputComboBox.Items.Clear();
+                for (int i = 0; i < leftNames.Count; i++)
+                {
+                    DeliveryNameInputComboBox.Items.Add(leftNames[i]);
+                }
+                DeliveryNameInputComboBox.IsDropDownOpen = true;
+            }
+        }
+
+        private void DeliveryNameInputComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedItem = (string)DeliveryNameInputComboBox.SelectedItem;
+            DeliveryNameInput.Text = selectedItem;
+            DeliveryNameInput.Text = selectedItem;
+            foreach (var value in idAndName)
+            {
+                if (value.Value.Equals(selectedItem))
+                {
+                    keyOfSelectedName = value.Key;
+                }
+            }
+        }
+        private void ToWhereInputComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string[] selectedItem = ToWhereInputComboBox.SelectedItem.ToString().Split(':',StringSplitOptions.RemoveEmptyEntries);
+            string res = selectedItem[1].Trim();
+            ToWhereInput.Text = res;
+            ToWhereInput.Text = res;
+        }
+        private void DeliveryButtonAdd_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            string typeGas = TypeGasInput.Text;
+            string deliver = DeliveryNameInput.Text;
+            string quantity = QuantityInput.Text;
+            string deliveryPrice = PriceInput.Text;
+            string where = ToWhereInput.Text;
+            string registerPlate = RegisterPlateInput.Text;
+            string driver = DriverNameInput.Text;
+
+
+            typeGas = queries.WhichIdIsThisGas(typeGas);
+            deliver = keyOfSelectedName.ToString();
+            try
+            {
+                queries.InsertDeliveredGasData(typeGas, deliver, quantity, deliveryPrice, where, registerPlate, driver);
+            }
+            catch
+            {
+                MessageBox.Show("Неуспешно приемане на горивото");
+            }
+            
+        }
+
+        
     }
 }
