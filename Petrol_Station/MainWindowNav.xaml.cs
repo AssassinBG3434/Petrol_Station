@@ -24,6 +24,7 @@ namespace Petrol_Station
         public Dictionary<string,string> dic = new Dictionary<string, string>();
         bool Fullscreen = false;
         private DispatcherTimer timer;
+        Queries queries = new Queries();
         public MainWindowNav(Dictionary<string, string> dic)
         {
             MainWindow mn = new MainWindow();
@@ -96,6 +97,7 @@ namespace Petrol_Station
         {
             GasColumns.Visibility = Visibility.Hidden;
             DeliveryModule.Visibility = Visibility.Visible;
+            CardsModule.Visibility = Visibility.Hidden;
             AccountsModule.Visibility = Visibility.Hidden;
         }
 
@@ -112,6 +114,7 @@ namespace Petrol_Station
         {
             DeliveryModule.Visibility = Visibility.Hidden;
             GasColumns.Visibility = Visibility.Hidden;
+            CardsModule.Visibility = Visibility.Hidden;
             AccountsModule.Visibility = Visibility.Hidden;
         }
         private void GridGasCol_MouseEnter(object sender, MouseEventArgs e)
@@ -126,6 +129,7 @@ namespace Petrol_Station
         private void GridGasCol_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DeliveryModule.Visibility = Visibility.Hidden;
+            CardsModule.Visibility = Visibility.Hidden;
             GasColumns.Visibility = Visibility.Visible;
             AccountsModule.Visibility = Visibility.Hidden;
         }
@@ -143,6 +147,9 @@ namespace Petrol_Station
             GasColumns.Visibility = Visibility.Hidden;
             DeliveryModule.Visibility = Visibility.Hidden;
             AccountsModule.Visibility = Visibility.Visible;
+            CardsModule.Visibility = Visibility.Hidden;
+
+            AccountsModule.GetAccountsData();
         }
 
         private void GridCards_MouseEnter(object sender, MouseEventArgs e)
@@ -159,6 +166,7 @@ namespace Petrol_Station
             GasColumns.Visibility = Visibility.Hidden;
             DeliveryModule.Visibility = Visibility.Hidden;
             AccountsModule.Visibility = Visibility.Hidden;
+            CardsModule.Visibility = Visibility.Visible;
 
         }
         private void GridWeather_MouseEnter(object sender, MouseEventArgs e)

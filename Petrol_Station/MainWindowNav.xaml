@@ -15,14 +15,14 @@
     <Border CornerRadius="50" Background="Transparent">
 
         <StackPanel>
-            
+
             <StackPanel.Background>
                 <!--<LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                     <GradientStop Color="#0C1017" Offset="0.584" />
                 </LinearGradientBrush>-->
                 <ImageBrush  ImageSource="D:\Downloads\images for GasStation\cartoon-style-gas-station-background_52683-79920.jpg"></ImageBrush>
             </StackPanel.Background>
-           
+
             <Grid VerticalAlignment="Top">
                 <Grid Height="20" HorizontalAlignment="Right" VerticalAlignment="Top">
 
@@ -45,97 +45,98 @@
                     <delivery:DeliveryModule x:Name="DeliveryModule" Grid.Column="1" Height="auto" Width="auto" Panel.ZIndex="1" Visibility="Hidden"/>
                     <delivery:GasColumns x:Name="GasColumns" Grid.Column="1" Height="auto" Width="auto" Visibility="Hidden" />
                     <delivery:AccountsModule x:Name="AccountsModule" Grid.Column="1" Height="auto" Width="auto" Visibility="Hidden"/>
+                    <delivery:CardsComponent x:Name="CardsModule" Grid.Column="1" Height="auto" Width="auto" Visibility="Hidden"/>
 
                     <Border Grid.Column="0" HorizontalAlignment="Left">
-                    <Border.Background>
-                        <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0.2"></ImageBrush>
-                    </Border.Background>
-                    <Grid Height="600" Width="200">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1.5*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <!--Logo-->
-                        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="D:\Downloads\images for GasStation\Screenshot_2024-02-14_085013-removebg-preview.png" Height="60" Grid.Row="0"></Image>
-                        <!--Dostavka-->
-                        <Grid x:Name="GridDelivery" Grid.Row="1" MouseEnter="GridDelivery_MouseEnter" MouseLeave="GridDelivery_MouseLeave" MouseLeftButtonDown="GridDelivery_MouseLeftButtonDown">
-                            <Grid.Background>
-                                <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
-                            </Grid.Background>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.5*"/>
-                                <ColumnDefinition Width="1.5*"/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <TextBlock Text="Доставка" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
-                            <Image  Source="D:\Downloads\images for GasStation\icons8-truck-101.png" Grid.Column="1" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                        </Grid>
-                        <!--Справка-->
-                        <Grid x:Name="GridSum" Grid.Row="2" MouseEnter="GridSum_MouseEnter" MouseLeave="GridSum_MouseLeave" MouseLeftButtonDown="GridSum_MouseLeftButtonDown">
-                            <Grid.Background>
-                                <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
-                            </Grid.Background>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.5*"/>
-                                <ColumnDefinition Width="1.4*"/>
-                            </Grid.ColumnDefinitions>
+                        <Border.Background>
+                            <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0.2"></ImageBrush>
+                        </Border.Background>
+                        <Grid Height="600" Width="200">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.5*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <!--Logo-->
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="D:\Downloads\images for GasStation\Screenshot_2024-02-14_085013-removebg-preview.png" Height="60" Grid.Row="0"></Image>
+                            <!--Dostavka-->
+                            <Grid x:Name="GridDelivery" Grid.Row="1" MouseEnter="GridDelivery_MouseEnter" MouseLeave="GridDelivery_MouseLeave" MouseLeftButtonDown="GridDelivery_MouseLeftButtonDown">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Справка" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
-                            <Image Source="D:\Downloads\images for GasStation\icons8-list-96.png" Grid.Column="1" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                        </Grid>
-                        <!--Колонки-->
-                        <Grid x:Name="GridGasCol" Grid.Row="3" MouseEnter="GridGasCol_MouseEnter" MouseLeave="GridGasCol_MouseLeave" MouseLeftButtonDown="GridGasCol_MouseLeftButtonDown">
-                            <Grid.Background>
-                                <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
-                            </Grid.Background>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.5*"/>
-                                <ColumnDefinition Width="1.4*"/>
-                            </Grid.ColumnDefinitions>
+                                <TextBlock Text="Доставка" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
+                                <Image  Source="D:\Downloads\images for GasStation\icons8-truck-101.png" Grid.Column="1" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                            </Grid>
+                            <!--Справка-->
+                            <Grid x:Name="GridSum" Grid.Row="2" MouseEnter="GridSum_MouseEnter" MouseLeave="GridSum_MouseLeave" MouseLeftButtonDown="GridSum_MouseLeftButtonDown">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="1.4*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Колонки" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
-                            <Image Source="D:\Downloads\images for GasStation\icons8-gas-station-100.png" Grid.Column="1" Height="38" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                        </Grid>
-                        <!--Account-->
-                        <Grid x:Name="GridAccounts" Grid.Row="4" MouseEnter="GridAccounts_MouseEnter" MouseLeave="GridAccounts_MouseLeave" MouseLeftButtonDown="GridAccounts_MouseLeftButtonDown">
-                            <Grid.Background>
-                                <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
-                            </Grid.Background>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.5*"/>
-                                <ColumnDefinition Width="1.4*"/>
-                            </Grid.ColumnDefinitions>
+                                <TextBlock Text="Справка" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
+                                <Image Source="D:\Downloads\images for GasStation\icons8-list-96.png" Grid.Column="1" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                            </Grid>
+                            <!--Колонки-->
+                            <Grid x:Name="GridGasCol" Grid.Row="3" MouseEnter="GridGasCol_MouseEnter" MouseLeave="GridGasCol_MouseLeave" MouseLeftButtonDown="GridGasCol_MouseLeftButtonDown">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="1.4*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Акаунти" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
-                            <Image Source="D:\Downloads\images for GasStation\icons8-account-96.png" Grid.Column="1" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                        </Grid>
-                        <!--Card-->
-                        <Grid x:Name="GridCards" Grid.Row="5" MouseEnter="GridCards_MouseEnter" MouseLeave="GridCards_MouseLeave" MouseLeftButtonDown="GridCards_MouseLeftButtonDown">
-                            <Grid.Background>
-                                <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
-                            </Grid.Background>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.5*"/>
-                                <ColumnDefinition Width="1.4*"/>
-                            </Grid.ColumnDefinitions>
+                                <TextBlock Text="Колонки" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
+                                <Image Source="D:\Downloads\images for GasStation\icons8-gas-station-100.png" Grid.Column="1" Height="38" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                            </Grid>
+                            <!--Account-->
+                            <Grid x:Name="GridAccounts" Grid.Row="4" MouseEnter="GridAccounts_MouseEnter" MouseLeave="GridAccounts_MouseLeave" MouseLeftButtonDown="GridAccounts_MouseLeftButtonDown">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="1.4*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Карти" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
-                            <Image Source="D:\Downloads\images for GasStation\icons8-card-100.png" Grid.Column="1" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                        </Grid>
-                        <!--Времето и часа-->
-                        <Grid Grid.Row="6">
-                            
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                            </Grid.ColumnDefinitions>
-                            <!--Час-->
-                            <Grid Grid.Column="0">
+                                <TextBlock Text="Акаунти" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
+                                <Image Source="D:\Downloads\images for GasStation\icons8-account-96.png" Grid.Column="1" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                            </Grid>
+                            <!--Card-->
+                            <Grid x:Name="GridCards" Grid.Row="4" MouseEnter="GridCards_MouseEnter" MouseLeave="GridCards_MouseLeave" MouseLeftButtonDown="GridCards_MouseLeftButtonDown" Height="71" Margin="0,70,0,0" Grid.RowSpan="3" VerticalAlignment="Top">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="1.4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Карти" Grid.Row="0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="10,0,0,0"></TextBlock>
+                                <Image Source="D:\Downloads\images for GasStation\icons8-card-100.png" Grid.Column="1" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                            </Grid>
+                            <!--Времето и часа-->
+                            <Grid Grid.Row="6">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--Час-->
+                                <Grid Grid.Column="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1*"/>
                                         <RowDefinition Height="1*"/>
@@ -145,29 +146,29 @@
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="3" Foreground="White" x:Name="clockTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                                 </Grid>
-                            <!--Време-->
-                            <Grid x:Name="GridWeather" Grid.Column="1" MouseEnter="GridWeather_MouseEnter" MouseLeave="GridWeather_MouseLeave">
-                                <Grid.Background>
-                                    <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
-                                </Grid.Background>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <Grid x:Name="GridWeatherImage" Grid.Row="0">
+                                <!--Време-->
+                                <Grid x:Name="GridWeather" Grid.Column="1" MouseEnter="GridWeather_MouseEnter" MouseLeave="GridWeather_MouseLeave">
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
+                                    </Grid.Background>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="2*"/>
                                         <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
-                                    <TextBlock  x:Name="Type" Grid.Row="1" Text="Облачно" FontSize="12" HorizontalAlignment="Center" Foreground="White"></TextBlock>
+                                    <Grid x:Name="GridWeatherImage" Grid.Row="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock  x:Name="Type" Grid.Row="1" Text="Облачно" FontSize="12" HorizontalAlignment="Center" Foreground="White"></TextBlock>
+                                    </Grid>
+                                    <TextBlock x:Name="Celsius" Grid.Row="1" Text="6.4" FontSize="20" HorizontalAlignment="Center" Foreground="White"></TextBlock>
+                                    <TextBlock x:Name="Feels_like" Grid.Row="2" Text="Усеща се 2 °C" FontSize="13" HorizontalAlignment="Center" Foreground="White"></TextBlock>
                                 </Grid>
-                                <TextBlock x:Name="Celsius" Grid.Row="1" Text="6.4" FontSize="20" HorizontalAlignment="Center" Foreground="White"></TextBlock>
-                                <TextBlock x:Name="Feels_like" Grid.Row="2" Text="Усеща се 2 °C" FontSize="13" HorizontalAlignment="Center" Foreground="White"></TextBlock>
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Border>
+                    </Border>
                 </Grid>
             </Grid>
         </StackPanel>

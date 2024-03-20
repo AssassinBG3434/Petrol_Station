@@ -75,3 +75,37 @@ VALUES (2,1,1000,2,N'B 3453 TX',N'Иван',1.54);
 SELECT * FROM AllDelivered;
 
 SELECT (id) FROM GAS where (type_ = N'газ');
+
+CREATE TABLE Roles(
+	id INT IDENTITY,
+	PRIMARY KEY(id),
+	role_ nvarchar(20)
+);
+
+INSERT INTO Roles (role_) 
+Values ('admin');
+
+Select * from Roles;
+
+CREATE TABLE Accounts(
+	id int IDENTITY,
+	PRIMARY KEY(id),
+	name_ nvarchar(20),
+	password_ nvarchar(20),
+	roleId int,
+	FOREIGN KEY (roleId) REFERENCES Roles(id),
+);
+
+INSERT INTO Accounts (name_,password_,roleId) VALUES ('Petar Qnkov','admin',2);
+
+SELECT Accounts.name_,Accounts.password_,Roles.role_ FROM Accounts JOIN Roles on Accounts.roleId = Roles.id;
+
+CREATE TABLE Cards(
+	id int IDENTITY,
+	name_ nvarchar(35),
+	phone_num nvarchar(35),
+	card_num nvarchar(35),
+	barcode_path nvarchar(255)
+);
+INSERT INTO Cards (name_,phone_num,card_num,barcode_path) VALUES (N'Petar',N'0323221',N'23243421',N'D:\VisualStudio\Projects\Petrol_Station\Petrol_Station\bin\Debug\net6.0-windows\1554472944.png');
+DROP TABLE Cards;

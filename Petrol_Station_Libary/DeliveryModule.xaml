@@ -28,8 +28,8 @@
         
         <Border Margin="100,100,100,100" Padding="10,10,10,0" CornerRadius="20">
             <Border.Effect>
-                <DropShadowEffect ShadowDepth="9"  Direction="270" Color="Black" Opacity="0.3"/>
-            </Border.Effect>
+                    <DropShadowEffect ShadowDepth="9"  Direction="270" Color="Black" Opacity="0.3"/>
+                </Border.Effect>
             <Border.Background>
                 <!-- Use ImageBrush with a blurred image -->
                 <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Stretch="Fill" Opacity="0.5"/>
@@ -57,41 +57,37 @@
                             </Style>
                         </TextBox.Resources>
                     </TextBox>-->
-                <ComboBox x:Name="TypeGasInputComboBox" Margin="5,10,50,10" Grid.Row="0" Grid.Column="1" Foreground="White" Background="#FF0C1017" SelectionChanged="TypeGasInputComboBox_SelectionChanged" >
-                    <ComboBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                        <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#0C1017" />
-                    </ComboBox.Resources>
-                    <ComboBoxItem>Бензин</ComboBoxItem>
-                    <ComboBoxItem>Дизел</ComboBoxItem>
-                </ComboBox>
-                <TextBox x:Name="TypeGasInput" Foreground="White" Margin="0,10,70,10"  Grid.Row="0" Grid.Column="1" Background="#0C1017" TextChanged="TypeGasInput_TextChanged" >
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-                <!--Доставчик-->
-                <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Foreground="White" FontSize="20">Доставчик</TextBlock>
-                <Grid x:Name="Grid2" Grid.Column="1" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="0.22*"/>
-                    </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="DeliveryNameInputComboBox" Margin="5,10,0,10" Grid.Row="1" Grid.Column="0" Foreground="White" Background="#FF0C1017" SelectionChanged="DeliveryNameInputComboBox_SelectionChanged">
+                <ComboBox x:Name="TypeGasInputComboBox" Margin="5,10,50,10" Grid.Row="0" Grid.Column="1" Foreground="White" Background="#FF0C1017" SelectionChanged="TypeGasInputComboBox_SelectionChanged" SelectedItem="{Binding SeletedAxis , Mode=TwoWay}" >
                         <ComboBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5"/>
                             </Style>
                             <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#0C1017" />
                         </ComboBox.Resources>
-                        <ComboBoxItem>Бензин</ComboBoxItem>
-                        <ComboBoxItem>Дизел</ComboBoxItem>
                     </ComboBox>
-                    <TextBox x:Name="DeliveryNameInput" Foreground="White" Margin="0,10,20,10"  Grid.Row="1" Grid.Column="0" Background="#0C1017" TextChanged="DeliveryNameInput_TextChanged">
+                    <TextBox x:Name="TypeGasInput" Foreground="White" TextAlignment="Center"  Margin="0,10,70,10"  Grid.Row="0" Grid.Column="1" Background="#0C1017" TextChanged="TypeGasInput_TextChanged" >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <!--Доставчик-->
+                <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Foreground="White" FontSize="20">Доставчик</TextBlock>
+                <Grid x:Name="Grid2" Grid.Column="1" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.22*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="DeliveryNameInputComboBox" Margin="5,10,0,10" Grid.Row="1" Grid.Column="0" Foreground="White" Background="#FF0C1017" SelectionChanged="DeliveryNameInputComboBox_SelectionChanged" Loaded="DeliveryNameInputComboBox_Loaded">
+                            <ComboBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#0C1017" />
+                            </ComboBox.Resources>
+                        </ComboBox>
+                        <TextBox x:Name="DeliveryNameInput" TextAlignment="Center"  Foreground="White" Margin="0,10,20,10"  Grid.Row="1" Grid.Column="0" Background="#0C1017" TextChanged="DeliveryNameInput_TextChanged">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -112,7 +108,7 @@
                 </Grid>
                 <!--Количиство-->
                 <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" Foreground="White" FontSize="20">Количество</TextBlock>
-                <TextBox x:Name="QuantityInput" Foreground="White" Margin="0,10,50,10" Grid.Row="2" Grid.Column="1" Background="#0C1017">
+                <TextBox x:Name="QuantityInput" TextAlignment="Center" Foreground="White" Margin="0,10,50,10" Grid.Row="2" Grid.Column="1" Background="#0C1017">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -121,7 +117,7 @@
                 </TextBox>
                 <!--Доставна цена-->
                 <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" Foreground="White" FontSize="20">Доставна цена</TextBlock>
-                <TextBox x:Name="PriceInput" Foreground="White" Margin="0,10,50,10" Grid.Row="3" Grid.Column="1" Background="#0C1017">
+                    <TextBox x:Name="PriceInput" Foreground="White" TextAlignment="Center"  Margin="0,10,50,10" Grid.Row="3" Grid.Column="1" Background="#0C1017">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -141,7 +137,7 @@
                         <ComboBoxItem>2</ComboBoxItem>
                         <ComboBoxItem>3</ComboBoxItem>
                 </ComboBox>
-                <TextBox x:Name="ToWhereInput" IsReadOnly="True" Foreground="White" Margin="0,10,70,10"  Grid.Row="4" Grid.Column="1" Background="#0C1017">
+                    <TextBox x:Name="ToWhereInput" IsReadOnly="True" TextAlignment="Center"  Foreground="White" Margin="0,10,70,10"  Grid.Row="4" Grid.Column="1" Background="#0C1017">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -150,7 +146,7 @@
                 </TextBox>
                 <!--Рег. номер-->
                 <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Foreground="White" FontSize="20">Регистрационен номер</TextBlock>
-                <TextBox x:Name="RegisterPlateInput" Foreground="White" Margin="0,10,50,10" Grid.Row="5" Grid.Column="1" Background="#0C1017">
+                    <TextBox x:Name="RegisterPlateInput" Foreground="White" TextAlignment="Center"  Margin="0,10,50,10" Grid.Row="5" Grid.Column="1" Background="#0C1017">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -159,7 +155,7 @@
                 </TextBox>
                 <!--Шофьор-->
                 <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="0" Foreground="White" FontSize="20">Шофьор</TextBlock>
-                <TextBox x:Name="DriverNameInput" Foreground="White" Margin="0,10,50,10" Grid.Row="6" Grid.Column="1" Background="#0C1017">
+                    <TextBox x:Name="DriverNameInput" Foreground="White" TextAlignment="Center"  Margin="0,10,50,10" Grid.Row="6" Grid.Column="1" Background="#0C1017">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
