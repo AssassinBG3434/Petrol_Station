@@ -32,6 +32,8 @@ namespace Petrol_Station
         public MainWindow()
         {
             InitializeComponent();
+            this.Icon = new BitmapImage(new Uri("D:\\Downloads\\images for GasStation\\Screenshot_2024-02-14_085013-removebg-preview.png"));
+
         }
         async Task Weather(HttpClient client)
         {

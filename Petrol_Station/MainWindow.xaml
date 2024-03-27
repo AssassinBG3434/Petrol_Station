@@ -15,7 +15,7 @@
 
         <StackPanel>
             <StackPanel.Background>
-                <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\home_page.png"/>
+                <ImageBrush ImageSource="D:\VisualStudio\Projects\Petrol_Station\Images\Background.png"/>
             </StackPanel.Background>
         <Grid Height="20" HorizontalAlignment="Right" Margin="0,3,3,0">
             
@@ -29,7 +29,7 @@
             <Button Grid.Column="0" BorderThickness="0" Width="20" Background="Transparent" Foreground="White" >–</Button>
         </Grid>
         <Grid>
-                <Image Source="D:\Users\Pepo's PC\Pictures\Work Pictures\petroleood-high-resolution-logo-transparent.png"  HorizontalAlignment="Center" Margin="180,0,180,200"></Image>
+                <Image Source="D:\Downloads\images for GasStation\Screenshot_2024-02-14_085013-removebg-preview.png" Height="70" HorizontalAlignment="Center" Margin="180,0,180,200"></Image>
            
             <Grid>
 

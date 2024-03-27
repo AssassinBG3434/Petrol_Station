@@ -47,14 +47,6 @@ namespace Petrol_Station_Libary
         }
         public void InsertDeliveredGasData(string typeGas,string deliver, string quantity, string deliveryPrice, string where, string registerPlate, string driver)
         {
-            /*string typeGas = TypeGasInput.Text;
-            string deliver = DeliveryNameInput.Text;
-            string quantity = QuantityInput.Text;
-            string deliveryPrice = PriceInput.Text;
-            string where = ToWhereInput.Text;
-            string registerPlate = RegisterPlateInput.Text;
-            string driver = DriverNameInput.Text;*/
-            
             SqlCommand sqlCommand = new SqlCommand($"INSERT INTO AllDelivered (gasId,deliveryId,quantity,gasTankId,registerPlate,driver,price) VALUES ({typeGas},{deliver},{quantity},{where},N'{registerPlate}',N'{driver}',{deliveryPrice})", conn);
             conn.Open();
             sqlCommand.ExecuteNonQuery();

@@ -38,6 +38,7 @@ namespace Petrol_Station
 
             // Start the timer
             timer.Start();
+            this.Icon = new BitmapImage(new Uri("D:\\Downloads\\images for GasStation\\Screenshot_2024-02-14_085013-removebg-preview.png"));
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -169,15 +170,7 @@ namespace Petrol_Station
             CardsModule.Visibility = Visibility.Visible;
 
         }
-        private void GridWeather_MouseEnter(object sender, MouseEventArgs e)
-        {
-            GridWeather.Background.Opacity = 0.2;
-        }
-
-        private void GridWeather_MouseLeave(object sender, MouseEventArgs e)
-        {
-            GridWeather.Background.Opacity = 0;
-        }
+        
 
         
     }

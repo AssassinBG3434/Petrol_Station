@@ -17,10 +17,7 @@
         <StackPanel>
 
             <StackPanel.Background>
-                <!--<LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                    <GradientStop Color="#0C1017" Offset="0.584" />
-                </LinearGradientBrush>-->
-                <ImageBrush  ImageSource="D:\Downloads\images for GasStation\cartoon-style-gas-station-background_52683-79920.jpg"></ImageBrush>
+                <ImageBrush  ImageSource="D:\VisualStudio\Projects\Petrol_Station\Images\Background.png"></ImageBrush>
             </StackPanel.Background>
 
             <Grid VerticalAlignment="Top">
@@ -147,7 +144,7 @@
                                     <TextBlock Grid.Row="3" Foreground="White" x:Name="clockTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                                 </Grid>
                                 <!--Време-->
-                                <Grid x:Name="GridWeather" Grid.Column="1" MouseEnter="GridWeather_MouseEnter" MouseLeave="GridWeather_MouseLeave">
+                                <Grid x:Name="GridWeather" Grid.Column="1">
                                     <Grid.Background>
                                         <ImageBrush ImageSource="D:\Users\Pepo's PC\Desktop\171a22.png" Opacity="0"/>
                                     </Grid.Background>

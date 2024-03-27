@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -38,10 +39,22 @@ namespace Petrol_Station_Libary
 
         private void DeliveryButtonAdd_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            name = NameInput.Text;
-            mol = MolInput.Text;
-            address = AddressInput.Text;
-            bul = BulstatInput.Text;
+            if (NameInput.Text != "")
+                name = NameInput.Text;
+            else
+                MessageBox.Show("Моля попълнете полето за име!");
+            if (MolInput.Text != "")
+                mol = MolInput.Text;
+            else
+                MessageBox.Show("Моля попълнете полето за МОЛ!");
+            if (AddressInput.Text != "")
+                address = AddressInput.Text;
+            else
+                MessageBox.Show("Моля попълнете полето за адрес!");
+            if (BulstatInput.Text != "")
+                bul = BulstatInput.Text;
+            else
+                MessageBox.Show("Моля попълнете полето за Булстат!");
             Queries queries = new Queries();
             bool result = queries.InsertDataDelivery(name,mol,address,bul);
             if (!result)

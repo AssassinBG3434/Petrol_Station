@@ -109,3 +109,5 @@ CREATE TABLE Cards(
 );
 INSERT INTO Cards (name_,phone_num,card_num,barcode_path) VALUES (N'Petar',N'0323221',N'23243421',N'D:\VisualStudio\Projects\Petrol_Station\Petrol_Station\bin\Debug\net6.0-windows\1554472944.png');
 DROP TABLE Cards;
+SELECT * FROM Cards;
+SELECT * FROM GasTank;

@@ -65,14 +65,56 @@
                                 <RowDefinition Height="1.2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
+                            <!--Name TextBox-->
                             <TextBlock Grid.Row="0" Text="Име" FontSize="15" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                            <TextBox x:Name="Name" Foreground="White" TextAlignment="Center"  Margin="50,0,50,0" Grid.Row="1" Background="#0C1017">
+                            <TextBox x:Name="Name" Foreground="White" TextAlignment="Center" Margin="50,0,50,0" Grid.Row="1" Background="#0C1017">
                                 <TextBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="5"/>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="TextBox">
+                                                    <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                                                        <Border.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <TranslateTransform X="0"/>
+                                                            </TransformGroup>
+                                                        </Border.RenderTransform>
+                                                        <Grid>
+                                                            <ScrollViewer x:Name="PART_ContentHost" />
+                                                        </Grid>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <EventTrigger RoutedEvent="MouseEnter">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.03" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.03" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="-4" Duration="0:0:0.2"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                        <EventTrigger RoutedEvent="MouseLeave">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="0" Duration="0:0:0.2"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
                                     </Style>
                                 </TextBox.Resources>
                             </TextBox>
+                            <!--Phone number textBox-->
                         </Grid>
                         <Grid  Grid.Row="3">
                             <Grid.RowDefinitions>
@@ -82,11 +124,51 @@
                             </Grid.RowDefinitions>
                             <TextBlock Text="Телефонен номер" FontSize="15" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                             <TextBox x:Name="PhoneNumber" Foreground="White" TextAlignment="Center" Grid.Row="1"  Margin="50,0,50,0" Background="#0C1017">
-                            <TextBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="5"/>
-                                </Style>
-                            </TextBox.Resources>
+                                <TextBox.Resources>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="TextBox">
+                                                    <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                                                        <Border.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <TranslateTransform X="0"/>
+                                                            </TransformGroup>
+                                                        </Border.RenderTransform>
+                                                        <Grid>
+                                                            <ScrollViewer x:Name="PART_ContentHost" />
+                                                        </Grid>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <EventTrigger RoutedEvent="MouseEnter">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.03" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.03" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="-4" Duration="0:0:0.2"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                        <EventTrigger RoutedEvent="MouseLeave">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2"/>
+                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="0" Duration="0:0:0.2"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </TextBox.Resources>
                             </TextBox>
                         </Grid>
                         <Grid Grid.Row="5">
@@ -103,8 +185,48 @@
                                 <TextBlock Foreground="White" FontSize="15" Text="Номер на картата" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                 <TextBox x:Name="GenerateCode" Foreground="White" Grid.Row="1" IsReadOnly="True" TextAlignment="Center"  Grid.Column="0" Background="#0C1017">
                                     <TextBox.Resources>
-                                        <Style TargetType="{x:Type Border}">
-                                            <Setter Property="CornerRadius" Value="5"/>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="TextBox">
+                                                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                                                            <Border.RenderTransform>
+                                                                <TransformGroup>
+                                                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                    <TranslateTransform X="0"/>
+                                                                </TransformGroup>
+                                                            </Border.RenderTransform>
+                                                            <Grid>
+                                                                <ScrollViewer x:Name="PART_ContentHost" />
+                                                            </Grid>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <EventTrigger RoutedEvent="MouseEnter">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.03" Duration="0:0:0.2"/>
+                                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.03" Duration="0:0:0.2"/>
+                                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="-4" Duration="0:0:0.2"/>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
+                                                            <EventTrigger RoutedEvent="MouseLeave">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2"/>
+                                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2"/>
+                                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="0" Duration="0:0:0.2"/>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
                                         </Style>
                                     </TextBox.Resources>
                                 </TextBox>
@@ -132,7 +254,36 @@
                 </Border>
                 <!--Бутон-->
                 <Border x:Name="ButtonInsertCardInfo" Background="#FF2F98A0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Padding="15,8,15,8" MouseLeftButtonDown="ButtonInsertCardInfo_MouseLeftButtonDown">
-                    <TextBlock Text="Добави" Foreground="White" FontSize="20"></TextBlock>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="#FF2F98A0"/>
+                            <Setter Property="Padding" Value="15,8,15,8"/>
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Opacity" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.8" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <TextBlock Text="Добави" Foreground="White" FontSize="20"/>
                 </Border>
             </Grid>
         </Border>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,10 +51,18 @@ namespace Petrol_Station_Libary
 
         private void ButtonInsertCardInfo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
-            string name = Name.Text;
-            string phoneNumber = PhoneNumber.Text;
-            string generateCode = GenerateCode.Text;
+            string name = "";
+            string phoneNumber = "";
+            string generateCode = "";
+            if (Name.Text != "")
+                name = Name.Text;
+            else
+                MessageBox.Show("Моля попълнете полето за имена!");
+            if (PhoneNumber.Text != "")
+                phoneNumber = PhoneNumber.Text;
+            else
+                MessageBox.Show("Моля попълнете полето за номера!");
+            generateCode = GenerateCode.Text;
             try
             {
                 queries.InsertCardInfo(name, phoneNumber, generateCode, barcodePath);
@@ -64,7 +73,9 @@ namespace Petrol_Station_Libary
             {
                 MessageBox.Show("Неуспешно добавена карта");
             }
-            
+            GenerateBarcode.Visibility = Visibility.Visible;
+            GridBarcodeImage.Visibility = Visibility.Hidden;
+
         }
     }
 }
