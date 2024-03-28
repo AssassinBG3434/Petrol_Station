@@ -183,6 +183,7 @@ namespace Petrol_Station
             this.WindowStyle = WindowStyle.None;
             this.ShowInTaskbar = false;
             this.Height = 0; this.Width = 0;
+            this.Hide();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(

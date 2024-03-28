@@ -163,7 +163,7 @@
                                 </Grid>
                             </Border>
                             <!--4-->
-                            <Grid Grid.Column="1" Margin="0,0,0,10">
+                            <Grid x:Name="AfterSellingPetrol" Visibility="Collapsed" Grid.Column="1" Margin="0,0,0,10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="3*"/>
@@ -171,9 +171,10 @@
                                 <Grid Grid.Row="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="6*"/>
+                                        <ColumnDefinition Width="5*"/>
+                                        <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Border x:Name="BackButton" Background="#0C1017" CornerRadius="5" Height="20" Width="20">
+                                    <Border x:Name="BackButton" Background="#0C1017" CornerRadius="5" Height="20" Width="20" MouseLeftButtonDown="BackButton_MouseLeftButtonDown">
                                         <Border.RenderTransform>
                                             <TransformGroup>
                                                 <ScaleTransform ScaleX="1" ScaleY="1" />
@@ -202,9 +203,40 @@
                                         </Border.Triggers>
                                         <TextBlock Text="🡰" HorizontalAlignment="Center" FontSize="8" VerticalAlignment="Center" Foreground="White" />
                                     </Border>
+                                    <!--ShowCard-->
+                                    <Border x:Name="ShowCard" Grid.Column="2" CornerRadius="5" Height="20" Width="20">
+                                        <Border.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                                <TranslateTransform X="0" />
+                                            </TransformGroup>
+                                        </Border.RenderTransform>
+                                        <Border.Triggers>
+                                            <EventTrigger RoutedEvent="Border.MouseEnter">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.1" Duration="0:0:0.3" />
+                                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.1" Duration="0:0:0.3" />
+                                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="-3" Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="Border.MouseLeave">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.3" />
+                                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.3" />
+                                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="0" Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </Border.Triggers>
+                                        <Image x:Name="CardButton" Source="D:\Downloads\images for GasStation\icons8-card-100.png" MouseLeftButtonDown="CardButton_MouseLeftButtonDown"></Image>
+                                    </Border>
                                 </Grid>
-                                <TextBlock Grid.Row="0" x:Name="GasTypeLabel" Text="Гориво:" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
-                                <Border Grid.Row="1" BorderBrush="White" BorderThickness="0.2" >
+                                <TextBlock Grid.Row="0" x:Name="GasTypeLabel" Text="Гориво" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                                <!--Before Card Clicked-->
+                                <Border x:Name="SellingComp" Grid.Row="1" BorderBrush="White" BorderThickness="0.2" >
                                     <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*"/>
@@ -305,66 +337,113 @@
                                         <Grid Grid.Column="2">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="3*"/>
                                                 <RowDefinition Height="1*"/>
                                                 <RowDefinition Height="1*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" Text="Номер на картата" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10"></TextBlock>
-                                            <TextBox x:Name="CardInput" Foreground="White" Height="18" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="42" Grid.Row="1" Background="#0C1017">
-                                                <TextBox.Resources>
-                                                    <Style TargetType="TextBox">
-                                                        <Setter Property="Template">
-                                                            <Setter.Value>
-                                                                <ControlTemplate TargetType="TextBox">
-                                                                    <Border x:Name="border"
+
+                                            <Border BorderBrush="White" BorderThickness="0.2" Background="#0C1017" CornerRadius="10" Grid.Row="1" Grid.RowSpan="2">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="1*"/>
+                                                        <RowDefinition Height="1*"/>
+                                                        <RowDefinition Height="1*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <!--GasPrice-->
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="2*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock HorizontalAlignment="Right" Text="Гориво-" VerticalAlignment="Bottom" Foreground="White" FontSize="10"></TextBlock>
+                                                        <TextBlock Grid.Column="1" Text="0.00" VerticalAlignment="Bottom" Foreground="White" FontSize="10"></TextBlock>
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="2*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Text="Отстъпка-" Foreground="White" FontSize="10" HorizontalAlignment="Right"></TextBlock>
+                                                        <TextBlock Grid.Column="1" Text="0.00" Foreground="White" FontSize="10"></TextBlock>
+                                                    </Grid>
+                                                    <!--Final Price-->
+                                                    <Border Grid.Row="3" BorderThickness="0,1,0,0">
+                                                        <Border.BorderBrush>
+                                                            <VisualBrush>
+                                                                <VisualBrush.Visual>
+                                                                    <Rectangle Stroke="White" StrokeDashArray="1 2" StrokeThickness="5" Width="110" Height="1"/>
+                                                                </VisualBrush.Visual>
+                                                            </VisualBrush>
+                                                        </Border.BorderBrush>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="2*"/>
+                                                                <ColumnDefinition Width="1*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Grid.Column="0" Text="Цена:" Foreground="White" FontSize="11" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBlock Grid.Column="1" Text="0.00" Foreground="White" FontSize="11"></TextBlock>
+                                                        </Grid>
+                                                    </Border>
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                                <!--After Card Clicked-->
+                                <Border x:Name="BorderAfterCardClicked" Grid.Row="1" BorderBrush="White" BorderThickness="0.2" Visibility="Collapsed">
+                                    <TextBox x:Name="CardInput" Foreground="White" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="42" Grid.Row="3" Background="#0C1017">
+                                        <TextBox.Resources>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="TextBox">
+                                                            <Border x:Name="border"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="5">
-                                                                        <Border.RenderTransform>
-                                                                            <TransformGroup>
-                                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
-                                                                                <TranslateTransform X="0"/>
-                                                                            </TransformGroup>
-                                                                        </Border.RenderTransform>
-                                                                        <Grid>
-                                                                            <ScrollViewer x:Name="PART_ContentHost" />
-                                                                        </Grid>
-                                                                    </Border>
-                                                                    <ControlTemplate.Triggers>
-                                                                        <EventTrigger RoutedEvent="MouseEnter">
-                                                                            <BeginStoryboard>
-                                                                                <Storyboard>
-                                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.03" Duration="0:0:0.2"/>
-                                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.03" Duration="0:0:0.2"/>
-                                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="-4" Duration="0:0:0.2"/>
-                                                                                </Storyboard>
-                                                                            </BeginStoryboard>
-                                                                        </EventTrigger>
-                                                                        <EventTrigger RoutedEvent="MouseLeave">
-                                                                            <BeginStoryboard>
-                                                                                <Storyboard>
-                                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2"/>
-                                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2"/>
-                                                                                    <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="0" Duration="0:0:0.2"/>
-                                                                                </Storyboard>
-                                                                            </BeginStoryboard>
-                                                                        </EventTrigger>
-                                                                    </ControlTemplate.Triggers>
-                                                                </ControlTemplate>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                    </Style>
-                                                </TextBox.Resources>
-                                            </TextBox>
-                                        </Grid>
-                                    </Grid>
+                                                                <Border.RenderTransform>
+                                                                    <TransformGroup>
+                                                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                        <TranslateTransform X="0"/>
+                                                                    </TransformGroup>
+                                                                </Border.RenderTransform>
+                                                                <Grid>
+                                                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                                                </Grid>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <EventTrigger RoutedEvent="MouseEnter">
+                                                                    <BeginStoryboard>
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.03" Duration="0:0:0.2"/>
+                                                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.03" Duration="0:0:0.2"/>
+                                                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="-4" Duration="0:0:0.2"/>
+                                                                        </Storyboard>
+                                                                    </BeginStoryboard>
+                                                                </EventTrigger>
+                                                                <EventTrigger RoutedEvent="MouseLeave">
+                                                                    <BeginStoryboard>
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2"/>
+                                                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2"/>
+                                                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="0" Duration="0:0:0.2"/>
+                                                                        </Storyboard>
+                                                                    </BeginStoryboard>
+                                                                </EventTrigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </TextBox.Resources>
+                                    </TextBox>
                                 </Border>
                             </Grid>
                             <Border Margin="0,0,0,10" Grid.Column="1" BorderBrush="White" BorderThickness="0.2">
                                 <!--After-->
                                 <!--Before-->
-                                <Grid Visibility="Hidden">
+                                <Grid x:Name="BeforeBuyingPetrol" Visibility="Visible">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
@@ -386,13 +465,13 @@
                                             <RowDefinition Height="1*"/>
                                         </Grid.RowDefinitions>
 
-                                        <Border Grid.Row="1" CornerRadius="8" Background="#0C1017">
+                                        <Border x:Name="Benzin4" Grid.Row="1" CornerRadius="8" Background="#0C1017" MouseLeftButtonDown="Benzin4_MouseLeftButtonDown">
                                             <TextBlock Text="Бензин" FontSize="15" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                         </Border>
-                                        <Border Grid.Row="3" CornerRadius="8" Background="#0C1017">
+                                        <Border x:Name="Diesel4" Grid.Row="3" CornerRadius="8" Background="#0C1017" MouseLeftButtonDown="Diesel4_MouseLeftButtonDown">
                                             <TextBlock Text="Дизел" FontSize="15" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                         </Border>
-                                        <Border Grid.Row="5" CornerRadius="8" Background="#0C1017">
+                                        <Border x:Name="Gas4" Grid.Row="5" CornerRadius="8" Background="#0C1017" MouseLeftButtonDown="Gas4_MouseLeftButtonDown">
                                             <TextBlock Text="Газ" FontSize="15" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                         </Border>
                                     </Grid>
@@ -425,7 +504,10 @@
                             <RowDefinition Height="0.5*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="Дизел" VerticalAlignment="Center" Foreground="White" Grid.Row="0" HorizontalAlignment="Center"></TextBlock>
-                        <ProgressBar Grid.Row="1" Foreground="#FF2F98A0" Background="#0C1017" BorderThickness="0" Minimum="0" Maximum="100" Value="45" ></ProgressBar>
+                        <Grid x:Name="GridProgress1" Grid.Row="1" MouseEnter="GridProgress1_MouseEnter" MouseLeave="GridProgress1_MouseLeave">
+                            <ProgressBar Grid.Row="1" Foreground="#FF2F98A0" Background="#0C1017" BorderThickness="0" Minimum="0" Maximum="100" Value="45" ></ProgressBar>
+                            <TextBlock x:Name="ProgressPercents1" Text="45%" Visibility="Collapsed" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        </Grid>
                     </Grid>
                     <!--Цистерна 2-->
                     <Grid Grid.Row="2">
@@ -435,7 +517,10 @@
                             <RowDefinition Height="0.5*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="Бензин" VerticalAlignment="Center" Foreground="White" Grid.Row="0" HorizontalAlignment="Center"></TextBlock>
-                        <ProgressBar Grid.Row="1" Foreground="#FF2F98A0" Background="#0C1017" BorderThickness="0" Minimum="0" Maximum="100" Value="15" ></ProgressBar>
+                        <Grid x:Name="GridProgress2"  Grid.Row="1" MouseEnter="GridProgress2_MouseEnter" MouseLeave="GridProgress2_MouseLeave">
+                            <ProgressBar Foreground="#FF2F98A0" Background="#0C1017" BorderThickness="0" Minimum="0" Maximum="100" Value="15" ></ProgressBar>
+                            <TextBlock  x:Name="ProgressPercents2" Visibility="Collapsed" Text="15%" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        </Grid>
                     </Grid>
                     <!--Цистерна 3-->
                     <Grid Grid.Row="3">
@@ -445,7 +530,11 @@
                             <RowDefinition Height="0.5*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="Газ" VerticalAlignment="Center" Foreground="White" Grid.Row="0" HorizontalAlignment="Center"></TextBlock>
-                        <ProgressBar Grid.Row="1" Foreground="#FF2F98A0" Background="#0C1017" BorderThickness="0" Minimum="0" Maximum="100" Value="95" ></ProgressBar>
+                        <Grid x:Name="GridProgress3"  Grid.Row="1" MouseEnter="GridProgress3_MouseEnter" MouseLeave="GridProgress3_MouseLeave">
+                            <ProgressBar Grid.Row="1" Foreground="#FF2F98A0" Background="#0C1017" BorderThickness="0" Minimum="0" Maximum="100" Value="95" ></ProgressBar>
+                            <TextBlock  x:Name="ProgressPercents3" Text="95%" Visibility="Collapsed" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        </Grid>
+
                     </Grid>
                 </Grid>
             </Grid>
